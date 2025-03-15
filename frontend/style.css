@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background: orange;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#generate-btn {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background: #007BFF;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#generate-btn:hover {
+    background: #0056b3;
+}
+
+.container {
+    display: flex; /* لجعل القائمة والصور جنبًا إلى جنب */
+    gap: 20px; /* المسافة بين القائمة والصور */
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    width: 200px;
+    background-color: hsl(179, 75%, 38%);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#category-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#category-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#category-table td:hover {
+    background-color: #ddd;
+}
+
+#category-table td[data-value=""] {
+    font-style: italic;
+    color: black;
+}
+
+.category-option {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#image-container {
+    flex: 1; /* لملء المساحة المتبقية */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    background-color: gray;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    background-color: #fff;
+}
+
+.card:hover {
+    background-color: #ddd;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+#sentence-result {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
