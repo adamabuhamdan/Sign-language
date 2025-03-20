@@ -64,24 +64,29 @@ function displayImages(images) {
         if (isFav) star.innerHTML = "&#9733;";
 
         card.addEventListener("click", () => {
-            if (!selectedWords.includes(image.word)) {
-                selectedWords.push(image.word);
+            const word = image.word;
+            const index = selectedWords.indexOf(word);
+        
+            if (index === -1) {
+                // إذا الكلمة غير موجودة في المصفوفة، قم بإضافتها
+                selectedWords.push(word);
                 card.style.backgroundColor = "#9ea1d4";
                 card.style.fontSize = "17px";
                 card.style.color = "white";
             } else {
-                selectedWords = selectedWords.filter(word => word !== image.word);
+                // إذا الكلمة موجودة في المصفوفة، قم بإزالتها
+                selectedWords.splice(index, 1);
                 if (document.body.classList.contains("dark-mode")) {
                     card.style.backgroundColor = "#2e2e2e";
                     card.style.color = "white";
-                }
-                else{
+                } else {
                     card.style.backgroundColor = "#ffff";
-                    card.style.color = " #1e1e1e";
+                    card.style.color = "#1e1e1e";
                 }
                 card.style.fontSize = "16px";
-                
             }
+        
+            console.log("الكلمات المحددة:", selectedWords); // للتأكد من أن الكلمات يتم تحديثها بشكل صحيح
         });
 
         star.addEventListener("click", (e) => {

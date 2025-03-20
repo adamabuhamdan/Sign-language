@@ -1,6 +1,6 @@
-// 
-export async function sendToAI(words) {
+export const sendToAI = async (words) => {
     try {
+        console.log("الكلمات المرسلة إلى الذكاء الاصطناعي:", words); // للتأكد من أن الكلمات مرسلة بشكل صحيح
         const response = await fetch("http://localhost:5000/generate-sentence", {
             method: "POST",
             headers: {
@@ -8,15 +8,9 @@ export async function sendToAI(words) {
             },
             body: JSON.stringify({ words }),
         });
-
         const data = await response.json();
-        if (data.sentence) {
-            console.log("الجملة الناتجة:", data.sentence);
-            document.getElementById("sentence-result").innerHTML = data.sentence;
-        } else {
-            console.error("لم يتم إنشاء جملة.");
-        }
+        document.getElementById("sentence-result").innerText = data.sentence;
     } catch (error) {
-        console.error("حدث خطأ أثناء الاتصال بالخادم:", error);
+        console.error("حدث خطأ أثناء إرسال الكلمات إلى الذكاء الاصطناعي:", error);
     }
-}
+};
