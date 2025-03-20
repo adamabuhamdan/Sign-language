@@ -1,0 +1,446 @@
+:root {
+    --bg-color: #f0f4f8;
+    --text-color: #1e1e1e;
+    --primary-color: #4f46e5;
+    --secondary-color: #e0e7ff;
+    --card-bg: #ffffff;
+    --btn-bg: #4f46e5;
+    --btn-text: #ffffff;
+    --highlight: #dbeafe;
+    --category-hover: #c7d2fe;
+    --category-active: #a5b4fc;
+}
+
+body.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #f9fafb;
+    --primary-color: #4f46e5;
+    --secondary-color: #27272a;
+    --card-bg: #2e2e2e;
+    --btn-bg: #4f46e5;
+    --btn-text: #ffffff;
+    --highlight: #3b3b3b;
+    --category-hover: #3f3f46;
+    --category-active: #52525b;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: var(--btn-text);
+    border-bottom: 2px solid var(--highlight);
+}
+
+.logo {
+    height: 100px; /* ارتفاع الصورة */
+    width: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    border-radius: 10px;
+}
+
+.buttons-group button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+ 
+    
+}
+
+.buttons-group button:hover {
+    background: var(--highlight);
+    color: var(--primary-color);
+}
+
+.app-main {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--secondary-color);
+    border-radius: 10px;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 80vh;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+#category-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#category-table td {
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    background: var(--card-bg);
+    margin: 8px 0;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: bold;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+#category-table td:hover {
+    background: var(--category-hover);
+    transform: scale(1.02);
+}
+
+#category-table td.active-category {
+    background: var(--category-active);
+    color: var(--btn-text);
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#sentence-result {
+    padding: 10px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#image-container {
+    display: grid;
+    max-height: 75vh;
+    overflow-y: auto;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background: var(--highlight);
+}
+
+.card img {
+    width: 100%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.card p {
+    /* margin: 10px; */
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+}
+
+.card .star {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 20px;
+    color: gold;
+    cursor: pointer;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+#audio-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 1001;
+    text-align: center;
+}
+
+#audio-box img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#audio-box p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#audio-box button {
+    padding: 10px 20px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#audio-box button:hover {
+    background: var(--highlight);
+    color: var(--primary-color);
+}
+.app-footer {
+    background-color: var(--primary-color);
+    color: var(--btn-text);
+    padding: 20px 10px;
+    text-align: center;
+    border-top: 2px solid var(--highlight);
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.social-icons a img {
+    width: 24px;
+    height: 24px;
+    margin: 0 8px;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.social-icons a img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+html {
+    scroll-behavior: smooth;
+}
+/* Animation عند التحميل /
+ @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.app-header, .sidebar, .content {
+    animation: fadeIn 0.6s ease-in;
+}
+
+/ زر الوضع الليلي الجديد */
+.theme-toggle-btn {
+    font-size: 20px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: background 0.3s;
+}
+theme-toggle-btn:hover {
+    background: var(--highlight);
+    color: var(--primary-color);
+}
+#video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#video-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+}
+
+#intro-video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#close-video-btn {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#close-video-btn:hover {
+    background-color: #ff6b81;
+}
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color:whitesmoke;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+/* استعلامات الوسائط للهواتف */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* تصغير حجم الخط العام */
+    }
+
+    .app-header {
+        flex-direction: column; /* جعل العناصر في header تظهر بشكل عمودي */
+        padding: 10px;
+    }
+
+    .logo {
+        height: 80px; /* تصغير حجم الشعار */
+        margin-bottom: 10px;
+    }
+
+    .buttons-group {
+        display: flex;
+        flex-direction: column; /* جعل الأزرار تظهر بشكل عمودي */
+        gap: 10px;
+    }
+
+    .buttons-group button {
+        width: 100%; /* جعل الأزرار تأخذ العرض الكامل */
+        height: 40px; /* تصغير ارتفاع الأزرار */
+        font-size: 16px; /* تصغير حجم الخط في الأزرار */
+    }
+
+    .app-main {
+        flex-direction: column; /* جعل sidebar و content يظهران بشكل عمودي */
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .sidebar {
+        width: 100%; /* جعل sidebar يأخذ العرض الكامل */
+        max-height: 200px; /* تحديد ارتفاع أقصى للـ sidebar */
+        overflow-y: auto; /* إضافة تمرير عمودي إذا لزم الأمر */
+    }
+
+    #image-container {
+        grid-template-columns: repeat(2, 1fr); /* عرض صورتين في كل صف */
+        gap: 10px;
+    }
+
+    .card {
+        width: 100%; /* جعل البطاقات تأخذ العرض الكامل */
+    }
+
+    .card img {
+        height: 60%; /* تصغير حجم الصور في البطاقات */
+    }
+
+    .card p {
+        font-size: 14px; /* تصغير حجم النص في البطاقات */
+    }
+
+    .app-footer {
+        padding: 10px;
+    }
+
+    .footer-content p {
+        font-size: 12px; /* تصغير حجم النص في الـ footer */
+    }
+
+    .social-icons {
+        gap: 0.5rem; /* تقليل المسافة بين الأيقونات */
+    }
+
+    .social-icons a {
+        width: 2rem; /* تصغير حجم الأيقونات */
+        height: 2rem;
+    }
+
+    .social-icons a i {
+        font-size: 18px; /* تصغير حجم الأيقونات */
+    }
+
+    #audio-box {
+        width: 90%; /* جعل audio-box يأخذ عرضًا أكبر */
+        padding: 10px;
+    }
+
+    #audio-box img {
+        width: 80px; /* تصغير حجم الصورة في audio-box */
+        height: 80px;
+    }
+
+    #audio-box p {
+        font-size: 16px; /* تصغير حجم النص في audio-box */
+    }
+
+    #audio-box button {
+        padding: 8px 16px; /* تصغير حجم الزر في audio-box */
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مساعد التحدث</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <header class="app-header">
+        <img src="/logo/كلامي.png" alt="لوجو مترجم لغة الإشارة" class="logo">
+        <div class="buttons-group">
+            <button id="generate-btn">إنشاء الجملة</button>
+            <button id="play-audio-btn">تشغيل الصوت</button>
+            <button id="reset-btn">إعادة تعيين</button> <!-- زر إعادة تعيين -->
+            <button id="toggle-theme">🌙</button>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <aside class="sidebar">
+            <table id="category-table">
+                <tr><td class="category-option" data-value="">"اختر" مجموعة</td></tr>
+            </table>
+        </aside>
+
+        <section class="content">
+            <div id="sentence-result">الجملة المتوقعة من الذكاء الاصطناعي</div>
+            
+            <div id="image-container">
+                
+            </div>
+        </section>
+    </main>
+
+    <div id="overlay"></div>
+
+    <div id="audio-box">
+        <img src="تمام.jpeg" alt="صورة تشغيل الصوت">
+        <p>تمت قراءة الصوت بنجاح!</p>
+        <button id="close-box-btn">إغلاق</button>
+    </div>
+    <div id="video-overlay">
+        <div id="video-container">
+            <video id="intro-video" autoplay muted>
+                <source src="/video/Blue Cartoon Playful Animated Welcome Youtube Intro Video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button id="close-video-btn">✕</button>
+        </div>
+    </div>
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>© 2025 مترجم لغة الإشارة. جميع الحقوق محفوظة.</p>
+            <div class="social-icons">
+                <h4>Adam Abu Hamdan</h4>
+                <a href="https://www.linkedin.com/in/adam-abu-hamdan-a14993279/"><i class="ri-linkedin-fill"></i></a>
+                <h4>Ahmad Ahmad</h4>
+                <a href="https://www.linkedin.com/in/ahmad-ahmad-823090255/"><i class="ri-linkedin-fill"></i></a>
+
+        
+             </div>
+        </div>
+            </footer>
+            
+
+    <script type="module" src="js/main (1).js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=aJtPx3Jy"></script>
+    <script>
+        const toggleThemeBtn = document.getElementById("toggle-theme");
+        toggleThemeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+    </script>
+</body>
+</html>
